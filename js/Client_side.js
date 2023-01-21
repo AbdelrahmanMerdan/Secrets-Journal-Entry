@@ -53,7 +53,7 @@ function loginresponse(data, status){
   var ff = response["flag"]
     
   if (ff){
-      window.location.href="/Secrets-Journal-Entry/html/Project.html";
+      window.location.href="/Secrets-Journal-Entry/Project.html";
 
     }
 
