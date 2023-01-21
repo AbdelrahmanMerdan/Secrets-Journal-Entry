@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/Client_side.js"></script>
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+
+
+ 
+  <div class="top"  id = "top">
+    <span class = "threeline" onclick="openBar()">&#9776; </span>   
+    
+    <div id = "logomove"> 
+    <span class="logo">  <img class="loginpiclogo" src="https://i.imgur.com/m9X9zu6.png" alt="IMG">   </span>
+    </div>
+
+    <div class="topRight">
+
+      <a class="Home" href="Project.html">Home</a>
+      <a href="loginpage.html">Log Out</a>
+     
+    </div>
+</div>
+    
+    <div id="myBar" class="contentBarnav">
+        <a class="close" onclick="closeBar()">&times;</a>
+        <a href="CreateJournal.html">Create Journal</a></li>
+        &nbsp;
+
+        <a href="mysetting.html">Settings</a></li>
+        &nbsp;
+        <a href=#></a></li>
+    </div>
+    <div id="mainContent" class = "settingcvr">
+      <div id = 'decoration'  class = 'column'>
+        <img id = 'lock' src="https://i.imgur.com/F507FAu.png" alt="">
+      
+       </div>
+      <br>
+      <form action="#">
+        <div class = 'column' id = "container">
+        
+          <h1>Settings</h1>
+          <p id = 'updateuser'> Update User Information</p>
+          <hr>
+         
+          <label for="username"> Username</label>
+          <br>
+
+          <input  id = "userset" type="text" placeholder="Enter New Username">
+          <br>
+
+          <label for="password"> Password</label>
+          <br>
+
+          <input id = "passset" type="password" placeholder="Enter New Password">
+          <br>
+
+          <label for="Confirm"> Confirm Password</label>
+          <br>
+
+          <input  id = "passreset" type="password" placeholder="Confirm Password">
+          
+          
+        </div>
+          
+         
+          <button type="button" class="save" onclick="settings()">Save Changes</button>
+    
+
+
+    </div>
+   
+
+</body>
+</html>
+
