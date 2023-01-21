@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+  
+    /* check */
+    box-sizing: border-box;
+  }
+  
+
+  
+  body {
+    line-height: 1.5;
+    background-image: url("https://i.imgur.com/rwpmJDx.jpg");
+    background-size: cover;
+     font-family: Arial, Helvetica, sans-serif;
+     margin: 0;
+     font-family: Arial, Helvetica, sans-serif;
+
+    
+  }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 1px;
+  margin-top: 50px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom:15px;
+  
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6d6d6d; 
+  border-radius: 15px;
+  margin-top: 50px;
+  
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+  margin-top: 50px;
+}
+  
+  .contentBarnav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #414141;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .contentBarnav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color:rgb(255, 255, 255);
+    display: block;
+    transition: 0.3s;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .contentBarnav a:hover {
+  
+    color: white;
+  }
+  
+  .contentBarnav .close {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  span{
+  font-size:30px;cursor:pointer
+  }
+  
+  
+  .top {
+    overflow: hidden;
+    background-image: url("https://i.imgur.com/JyoA8yv.jpg");
+    background-size: cover;
+    background-color: white;
+    padding: 10px 20px;
+  
+    
+  }
+  
+  .top a {
+    float: left;
+    color:#414141 ;
+    text-align: center;
+    padding: 19px;
+    text-decoration: none;
+    font-size: 18px; 
+    
+    
+    font-weight: bold;
+  }
+  
+  
+  
+
+  
+  .logo{
+    
+    width: 100vh;
+    display: inline-block;
+
+  }
+  
+  #logomove{
+    text-align: center;
+  }
+  
+  .loginpiclogo{
+    
+    width: 75px;
+
+  }
+  
+  .top a:hover {
+    background-color: lightblue;
+    color: black;
+  }
+  
+  .top a.active {
+    background-color:lightgoldenrodyellow;
+    color: white;
+  }
+  
+  .topRight {
+    position:absolute;
+     top:0;
+     right:0;
+    
+  }
+  
+  .threeline{
+    float: left;
+  }
+  
+  
+  
+  
+  
+  /* Customization page */
+  .m-header {
+    padding: 2%;
+  }
+  .mh-title {
+    font-size: 20;
+    font-weight: 700;
+  }
+  .picture-switcher {
+    position: relative;
+    padding: 0 3px; 
+  }
+  .pic {
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    margin: 0 1px;
+    cursor: pointer;
+    background-color: rgb(238, 234, 227);
+    border: solid 1px black;
+  }
+  #pfp {
+     padding: 10px; padding-top:0px;
+    width: 200px;
+    height: 200px;
+  }
+  
+  
+  .bg-switcher {
+    position: relative;
+    padding: 0 3px;
+    
+  }
+  .bg {
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    margin: 0 1px;
+    cursor: pointer;
+    border: solid 1px black;
+  }
+  .bg0 {
+    background-color: lightgray;
+  }
+  .bg1 {
+    background-color: #8EACD0;
+    
+    
+  }
+  .bg2 {
+    background-color: #FF9F9F;
+  }
+  .bg3 {
+    background-color: #D9E400;
+  }
+  .remove {
+    display: table-cell;
+    width: 100px;
+    height: 50px;
+    margin-top: 5px;
+    cursor: pointer;
+    position: relative;
+    padding: 0 3px;
+    background-color: rgb(238, 234, 227);
+    border: solid 1px black;
+  }
+  
+  #profilepic{
+    height: 50px;
+    width: 50px;
+    position: relative;
+  }
+
+
+  /* Home Page */
+
+  #container{
+  
+    width: 50vw; 
+    display: inline-block;
+  }
+
+  #createj{
+  
+  
+    padding: 24px;
+ 
+    text-align: left;
+    display: block;
+
+  }
+  
+  #createj{
+
+    padding-top: 2%;
+
+  }
+
+
+  #bookcover{
+    display: flex;
+    height: auto;
+
+  }
+  
+  #column{
+    
+    display: flex;
+    flex: 100%;
+    padding: 10px;
+  }
+
+  #main{
+    position:right;
+    top:0;
+    left:0;
+
+    
+    margin-right: 40px;
+
+    width: 480px;
+    min-width: 480px;
+    
+    height: 727px;
+     overflow: scroll;
+     overflow-x: hidden;
+    
+
+     border-color: rgb(255, 255, 255);
+  border-style: solid;
+  border-radius: 25px;
+  border-width: 5px;
+  background: rgba(255, 255, 255, 1);
+  }
+  
+  #myjournal{
+
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 35px;
+    
+  }
+
+
+  #covers {
+    position:left;
+    
+     top:0;
+     right:100px;
+  
+     width: 500px;
+     height: 727px;
+
+     border-color: white;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 5px;
+  }
+
+  #paper {
+    position:right;
+    top:0;
+    left: 50px;
+  
+    width: 500px;
+     height: 727px;
+  
+    border-color: white;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 5px;
+    
+    
+  }
+
+button {
+    display: block;
+}
+
+#JournalsRED{
+    background-color: transparent;
+    border: 1px solid transparent;
+    background-image: url('https://i.imgur.com/TmP0ytl.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 480px;
+    height: 145px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+
+}
+
+
+#JournalsBLUE{
+  background-color: transparent;
+  border: 1px solid transparent;
+  background-image: url('https://i.imgur.com/KJ9nUWk.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 480px;
+  height: 145px;
+
+}
+
+#JournalsYELLOW{
+  background-color: transparent;
+  border: 1px solid transparent;
+  background-image: url('https://i.imgur.com/u8yA4IL.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 480px;
+  height: 145px;
+
+}
+
+#JournalsGREEN{
+  background-color: transparent;
+  border: 1px solid transparent;
+  background-image: url('https://i.imgur.com/LQwFo7y.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 480px;
+  height: 145px;
+
+}
+
+#btntxt{
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  width: 200px;
+  max-width: 200px;
+  height: 25px;
+  word-wrap: break-word;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#btntxtdv{
+  position: absolute;
+  
+
+  width: 480px;
+   
+
+   overflow: scroll;
+   overflow-x: hidden;
+  word-wrap: break-word;
+}
+
+#txtcont {
+    position: relative;
+    text-align: left;
+
+    width: 500px;
+     height: 727px;
+
+     word-wrap: break-word;
+    
+  }
+
+  .JWrite {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+
+    width: 480px;
+     height: 710px;
+
+     overflow: scroll;
+     overflow-x: hidden;
+    word-wrap: break-word;
+  }
+
+
+
+  #txtcontTitle {
+    position: relative;
+    text-align: center;
+
+    width: 450px;
+     height: 700px;
+
+     word-wrap: break-word;
+     
+    
+  }
+
+  .JWriteTitle {
+    position: absolute;
+    top: 35%;
+    left: 56%;
+  transform: translate(-50%, -50%);
+
+    width: 350px;
+    height: 50px;
+     
+    word-wrap: break-word;
+    overflow: scroll;
+  }
+
+  #decoration{
+    display: block;
+    width: 100%;
+  }
+  
+  #pencil{
+    width: 190px;
+    padding-top: 10px;
+    padding-right: 15px;
+    margin-left: 100px
+  }
+  
+
+  #deleteJournals{
+    
+    background-color: #414141;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 25px;
+  box-sizing: border-box;
+  }
+
+  #deleteJournals:hover{
+
+    background-color: #FFD075;
+  border: #DE9E57;
+  border-style: solid;
+  border-width: 5px;
+  box-sizing: border-box;
+  }
+
+  
