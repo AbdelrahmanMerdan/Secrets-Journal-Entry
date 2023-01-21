@@ -1,6 +1,6 @@
-// const express = require("express");
 
-var url = "http://localhost:2000";
+var url = "https://secrets-server-side-production.up.railway.app";
+// var url = "http://localhost:2000";
 
 // login page
 function login(){
@@ -10,7 +10,7 @@ function login(){
   
   if((usern != '') && (pass != '')){
     
-        $.post(
+        $.get(
           url + "/login" +'?data='+JSON.stringify({
 
           'action':'Login',
@@ -24,6 +24,8 @@ function login(){
   else{
     document.getElementById("loginfail").innerHTML = "Wrong username or password, try again"
   }
+
+  // $.get(url + "/hello", console.log('hello'))
 
 }
 
@@ -364,73 +366,74 @@ function settingsresponse(data, status){
 
 
 // profile picture 
-function profilePicture(num){
-	var im = document.getElementById("pfp");
-	switch (num) {
-		case 0:
-			im.src="https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png";
+
+// function profilePicture(num){
+// 	var im = document.getElementById("pfp");
+// 	switch (num) {
+// 		case 0:
+// 			im.src="https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png";
       
-      $.post(
-        url + '/profilepicture' +'?data='+JSON.stringify({
+//       $.post(
+//         url + '/profilepicture' +'?data='+JSON.stringify({
 
-          'action':'Profile',
-          "theme" : "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
-        })
+//           'action':'Profile',
+//           "theme" : "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
+//         })
         
-        ) 
-			break;
-		case 1:
-			im.src="https://cdn.pixabay.com/photo/2022/01/11/19/43/avocado-6931344_1280.jpg";
-      $.post(
-        url + '/profilepicture' +'?data='+JSON.stringify({
+//         ) 
+// 			break;
+// 		case 1:
+// 			im.src="https://cdn.pixabay.com/photo/2022/01/11/19/43/avocado-6931344_1280.jpg";
+//       $.post(
+//         url + '/profilepicture' +'?data='+JSON.stringify({
 
-          'action':'Profile',
-          "theme" : "https://cdn.pixabay.com/photo/2022/01/11/19/43/avocado-6931344_1280.jpg"
-        })
+//           'action':'Profile',
+//           "theme" : "https://cdn.pixabay.com/photo/2022/01/11/19/43/avocado-6931344_1280.jpg"
+//         })
         
-        ) 
-			break;
-		case 2:
-			im.src="https://cdn.pixabay.com/photo/2018/05/26/18/06/dog-3431913_1280.jpg";
-      $.post(
-        url + '/profilepicture' +'?data='+JSON.stringify({
+//         ) 
+// 			break;
+// 		case 2:
+// 			im.src="https://cdn.pixabay.com/photo/2018/05/26/18/06/dog-3431913_1280.jpg";
+//       $.post(
+//         url + '/profilepicture' +'?data='+JSON.stringify({
 
-          'action':'Profile',
-          "theme" : "https://cdn.pixabay.com/photo/2018/05/26/18/06/dog-3431913_1280.jpg"
-        })
+//           'action':'Profile',
+//           "theme" : "https://cdn.pixabay.com/photo/2018/05/26/18/06/dog-3431913_1280.jpg"
+//         })
         
-        ) 
-			break;
-		case 3:
-			im.src="https://cdn.pixabay.com/photo/2017/11/06/18/30/eggplant-2924511_1280.png";
-      $.post(
-        url + '/profilepicture' +'?data='+JSON.stringify({
+//         ) 
+// 			break;
+// 		case 3:
+// 			im.src="https://cdn.pixabay.com/photo/2017/11/06/18/30/eggplant-2924511_1280.png";
+//       $.post(
+//         url + '/profilepicture' +'?data='+JSON.stringify({
 
-          'action':'Profile',
-          "theme" : "https://cdn.pixabay.com/photo/2017/11/06/18/30/eggplant-2924511_1280.png"
-        })
+//           'action':'Profile',
+//           "theme" : "https://cdn.pixabay.com/photo/2017/11/06/18/30/eggplant-2924511_1280.png"
+//         })
         
-        ) 
-			break;
-	}
-}
+//         ) 
+// 			break;
+// 	}
+// }
 
-function placePpic(){
-  $.post(
-    url + '/placeprofilepicture' +'?data='+JSON.stringify({
+// function placePpic(){
+//   $.post(
+//     url + '/placeprofilepicture' +'?data='+JSON.stringify({
 
-    'action':'Ppic',
+//     'action':'Ppic',
 
-    }),
-    placeppicresponse
-  );
+//     }),
+//     placeppicresponse
+//   );
 
-}
+// }
 
-function placeppicresponse(data, status){
-  var response = JSON.parse(data);
-  document.getElementById("profilepic").src = response["url"]
-}
+// function placeppicresponse(data, status){
+//   var response = JSON.parse(data);
+//   document.getElementById("profilepic").src = response["url"]
+// }
 
 // Customization
 
@@ -478,18 +481,6 @@ window.onload = function() {
   if (window.location.href.match('Project.html') != null) {
   addjournaltopage()
   }
-
-  if ((window.location.href.match('Project.html') != null)||
-      (window.location.href.match('CreateJournal.html') != null)||
-      (window.location.href.match('customization.html') != null)||
-      (window.location.href.match('mysetting.html') != null)) {
-        // customizepage()
-        placePpic()
-        
-        
-        console.log("hello!")
-        
-    }
 
   }
 
