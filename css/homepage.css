@@ -233,25 +233,12 @@
 
   /* Home Page */
 
-  #container{
   
-    width: 50vw; 
-    display: inline-block;
-  }
-
   #createj{
-  
-  
     padding: 24px;
- 
-    text-align: left;
-    display: block;
-
-  }
-  
-  #createj{
-
     padding-top: 2%;
+    width: 50%;
+    height: 1vh;
 
   }
 
@@ -277,10 +264,15 @@
     
     margin-right: 40px;
 
-    width: 480px;
-    min-width: 480px;
+    /* width: 480px;
+    min-width: 480px;*/
     
-    height: 727px;
+    height: 77vh; 
+
+    min-width: 50%;
+    /* min-height: 10px; */
+    
+
      overflow: scroll;
      overflow-x: hidden;
     
@@ -309,8 +301,11 @@
      top:0;
      right:100px;
   
-     width: 500px;
-     height: 727px;
+     /* width: 500px;
+     height: 727px; */
+     height: 77vh; 
+
+     min-width: 50%;
 
      border-color: white;
     border-style: solid;
@@ -323,8 +318,11 @@
     top:0;
     left: 50px;
   
-    width: 500px;
-     height: 727px;
+    /* width: 500px;
+     height: 727px; */
+     height: 77vh; 
+
+    min-width: 50%;
   
     border-color: white;
     border-style: solid;
@@ -344,7 +342,7 @@ button {
     background-image: url('https://i.imgur.com/TmP0ytl.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width: 480px;
+    width: 100%;
     height: 145px;
     font-family: Arial, Helvetica, sans-serif;
     
@@ -358,7 +356,7 @@ button {
   background-image: url('https://i.imgur.com/KJ9nUWk.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  width: 480px;
+  width: 100%;
   height: 145px;
 
 }
@@ -369,7 +367,7 @@ button {
   background-image: url('https://i.imgur.com/u8yA4IL.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  width: 480px;
+  width: 100%;
   height: 145px;
 
 }
@@ -380,7 +378,7 @@ button {
   background-image: url('https://i.imgur.com/LQwFo7y.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  width: 480px;
+  width: 100%;
   height: 145px;
 
 }
@@ -389,7 +387,7 @@ button {
   display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  width: 200px;
+  width: 100%;
   max-width: 200px;
   height: 25px;
   word-wrap: break-word;
@@ -453,8 +451,11 @@ button {
     left: 56%;
   transform: translate(-50%, -50%);
 
-    width: 350px;
-    height: 50px;
+    /* width: 350px;
+    height: 50px; */
+
+    width: 75%;
+    height: 20%;
      
     word-wrap: break-word;
     overflow: scroll;
@@ -466,10 +467,11 @@ button {
   }
   
   #pencil{
-    width: 190px;
+    width: 9vw;
+    /* width: 190px; */
     padding-top: 10px;
     padding-right: 15px;
-    margin-left: 100px
+    margin-left: 40%;
   }
   
 
@@ -481,7 +483,7 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  min-width: 50%;
   border-radius: 25px;
   box-sizing: border-box;
   }
