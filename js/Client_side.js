@@ -290,7 +290,7 @@ function changebookcovertitle(color){
   var cover = document.getElementById('covers')
   var paper = document.getElementById('paper')
 
-  paper.src = "https://i.imgur.com/5KIttz0.png"
+  
   
     if (color == 'Red'){
       cover.src = "https://i.imgur.com/OdqFX0P.png"
