@@ -248,26 +248,6 @@ font-size:30px;cursor:pointer
   
 }
 
-/* .container{
-  
-  background-size: 600px 750px;
-  background-image:url("https://i.imgur.com/dWITfhr.jpg"), url("https://i.imgur.com/TYhNJJC.png");
-  background-position:left, right;
-  background-repeat: no-repeat;
-  border: 50px blanchedalmond;
-     
-    
-    
-} */
-
-/* .container{
-  margin: 0 auto;
-  // For grow & shrink as per screen size change values as per your requirements
-  width: 80%;
-  height: 50%;
-} */
-
-
 
 .colorBox{
   background-color: pink;
@@ -298,7 +278,7 @@ margin-left: 4.9%;
   border: #DE9E57;
   border-style: solid;
   border-radius: 25px;
-  border-width: 5px;
+  border-width: 2px;
   
 }
 /* 
@@ -309,60 +289,79 @@ margin-left: 4.9%;
 
 #createj{
   
-  
   padding: 24px;
-  /* background-image: url("https://i.imgur.com/rwpmJDx.jpg") ;
-  background-size: cover; */
+
   text-align: left;
   display: inline-block;
-  /* padding-left: 14%;
-  padding-right: 20%; */
-  /* max-width: 100%;
-  max-height: 100%; */
+
 }
 
 #createj{
   padding-left: 7%;
 
-  /* width: 100%;  */
+
 }
 
 
 
-
+/* TEXT */
 textarea {
   resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  
+  color: #999999;
 }
 
 input, textarea{
   background: transparent ;
   border-color: rgba(128,128,128,0);
-  padding-left: 0px;
-  
- 
-  
+
+
 }
 
-/* #Reflectiontitle{
-  width: 30vw;
-  height: 74vh;
-} */
+#Reflectiontitle, #journalentry, #Keypoints, #authornote{
+  width: 90%;
+  /* margin-top: -10%; */
+}
+
 
 #Reflectiontitle{
 
-  /* width: 25vw; */
+ 
+  
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+
+  color: #999999;
+  text-decoration: underline;
   font-size: 30px;
-  position: absolute
+  
+
+
   
 }
 
-/* #covers{
-  
-  width: 550px
-} */
+#Keypoints{
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
 
+  color: #999999;
+  text-decoration: underline;
+  font-size: 15px;
+
+
+}
+
+#inputs{
+  position: absolute;
+  /* width: 100%; */
+  padding-left: 15%;
+
+}
+
+
+
+/* COVERS */
 #bookcover{
   display: flex;
   /* top: 0; */
@@ -382,59 +381,52 @@ input, textarea{
 
 #covers {
   position:left;
-  
-   top:0;
-   right:0;
+    
+  top:0;
+  right:100px;
 
-   width: 450px;
-   height: 700px;
+  /* width: 500px;
+  height: 727px; */
+  height: 70vh; 
 
-   /* width: 30vw;
-   height: 74vh; */
+  min-width: 50%;
 
-   /* width: 100%; */
-   /* height: 50%; */
-
-   border-color: white;
-  border-style: solid;
-  border-radius: 25px;
-  border-width: 5px;
+  border-color: white;
+ border-style: solid;
+ border-radius: 25px;
+ border-width: 5px;
 }
+
+
+
+
 
 #paper {
   position:right;
-  top:0;
-  left:0;
-
-  width: 450px;
-   height: 700px;
-
-  /* width: 30vw;
-  height: 74vh; */
-
-  /* width: 100%; */
-
-  border-color: white;
-  border-style: solid;
-  border-radius: 25px;
-  border-width: 5px;
+    top:0;
+    left: 50px;
   
+    /* width: 500px;
+     height: 727px; */
+     height: 70vh; 
+
+    min-width: 50%;
+  
+    border-color: white;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 5px;
   
 }
 
 
 
-#inputs{
-   position: absolute;
-   /* width: 100%; */
-   padding-left: 290px;
-   
-}
+
 
 
 
 #imgopt{
-  height: 16vh;
+  height: 15vh;
   
 }
 
@@ -450,7 +442,7 @@ input, textarea{
   border-radius: 25px;
   border-width: 5px;
   /* width: 10vw; */
-  height: 100%;
+  height: 70vh; 
   background-color:rgba(255, 255, 255, 0.4)
   
   
@@ -461,15 +453,6 @@ input, textarea{
   padding: 20px;
 }
 
-/* #mainContent{
-  width: 100vw;
-  height: 100vw;
-  
-}
-
-
- */
-
  #container{
   
   width: 50vw;
@@ -478,11 +461,8 @@ input, textarea{
   display: inline-block;
 }
 
-/* input[type="text"] {
-  display: inkl;
-  width: 50%;
-  padding-bottom: 50%;
-} */
+
+/* DECORATIONS */
 
 #decoration{
   display: inline-block;
@@ -490,13 +470,16 @@ input, textarea{
 }
 
 #pencil{
-  width: 300px;
-  padding-top: 50px;
+  width: 7vw;
+  /* width: 190px; */
+  padding-top: 40%;
+  
+  margin-left: 10%;
 }
 
 #lock{
-  width: 250px;
-  padding-top: 200px;
-  padding-right: 15px;
+  width: 13vw;
+  padding-top: 80%;
+  padding-right: 10%;
 }
 
