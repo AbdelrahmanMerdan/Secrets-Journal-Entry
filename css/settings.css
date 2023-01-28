@@ -281,15 +281,18 @@
 
   
 #userset,#passset, #passreset{
-    display: block;
-    margin: auto;
-    width: 80%;
-    height: 50px;
-    padding: 15px;
+    /* display: block;
+    margin: auto; */
+    width: 100%;
+    height: 10%;
+    /* padding: 50%; */
+    /* margin-left:10%; */
     background: rgb(209, 209, 209);
 
+    text-align: center;
+
     border-radius: 25px;
-    padding: 0 30px 0 68px;
+    /* padding: 0 30px 0 68px; */
     outline: none;
     border: none;
   }
@@ -314,7 +317,7 @@
     width: 100%;
     border-radius: 25px;
     margin-left: 15%;
-    margin-top: 50px;
+    margin-top: 5%;
   }
   
   .save:hover{
@@ -336,22 +339,25 @@
 
   label{
     display: block;
-    margin: auto;
-    width: 80%;
+    margin-top: 2%;
+    /* margin-bottom: 2%; */
+    /* width: 20%; */
+    text-align: center;
   }
   
   #container{
-    width: 960px;
+    width: 50vw;
+    height: 60vh;
   background: #fff;
   border-radius: 30px;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin-left: 15%;
   margin-top: 9%;
 
   
   
   justify-content: space-between;
-  padding: 50px 100px 50px 50px;
+  padding: 10% 10% 10% 10%;
 
   font-family: Arial, Helvetica, sans-serif;
 
@@ -381,7 +387,7 @@
 }
 
 #lock{
-    width: 350px;
+  width: 18vw;
     margin-top: 45%;
     margin-left: 25%;
     display: block;
