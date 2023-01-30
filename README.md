@@ -24,6 +24,6 @@ In the creation of the user interface design for Secrets, I leveraged the capabi
 <li>Each user can signup to the website with their own unique username. </li>
 <li>The user can create journal entries and customize each entry with a cover of their choosing.</li>
 <li>Each journal entry must have a unique title that the user hasn't used before </li>
-<li>The users journals are displayed on the home page where the user can view and delete their past journal entries.</li>
-<li>If the user isn't </li>
+<li>The users journals are displayed on the home page where the user can view and delete their past entries.</li>
+<li>If the user wishes to change their username or password, they can go to settings where they can change their information while keeping all their journals</li>
 </ul>
