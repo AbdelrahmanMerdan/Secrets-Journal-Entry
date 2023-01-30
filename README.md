@@ -27,3 +27,14 @@ In the creation of the user interface design for Secrets, I leveraged the capabi
 <li>The users journals are displayed on the home page where the user can view and delete their past entries.</li>
 <li>If the user wishes to change their username or password, they can go to settings where they can change their information while keeping all their journals</li>
 </ul>
+<hr>
+<h1> Future Additions </h1>
+In the future, I am planning on adding new features to Secrets! Here are some of the ideas so far!
+<ul>
+
+<li> A page customization option where the user can pick from different themes in order to change the colors of each page.</li>
+<li>An edit button where the user can make quick changes to their entries.</li>
+<li> A share option where users can send entries to others on the site.</li>
+
+</ul>
+
