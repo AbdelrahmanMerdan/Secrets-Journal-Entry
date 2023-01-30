@@ -14,6 +14,16 @@ The program was built using a combination of HTML, CSS, JavaScript, Node.js, the
 <hr>
 <h1> The Design </h1>
 In the creation of the user interface design for Secrets, I leveraged the capabilities of Adobe Illustrator. I employed a combination of the software's tools, such as the pen tool, shapes, and color palettes, to produce a visually appealing and intuitive design. The end result was a streamlined, contemporary layout that effectively communicated the journaling concept while providing a seamless user experience. The UI design generated in Illustrator served as a blueprint for the website's front-end development, ensuring a consistent aesthetic and user experience throughout the platform.
-
+<hr>
 <h1> The Server side</h1>
 <a href = https://github.com/AbdelrahmanMerdan/Secrets-Server-Side> The repository to the back end of the project can be found here! </a>
+<hr>
+<h1> Features </h1>
+<ul>
+
+<li>Each user can signup to the website with their own unique username. </li>
+<li>The user can create journal entries and customize each entry with a cover of their choosing.</li>
+<li>Each journal entry must have a unique title that the user hasn't used before </li>
+<li>The users journals are displayed on the home page where the user can view and delete their past journal entries.</li>
+<li>If the user isn't </li>
+</ul>
