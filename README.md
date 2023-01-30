@@ -11,3 +11,5 @@ The program was built using a combination of HTML, CSS, JavaScript, Node.js, the
 <li>Railway app</li>
 <li>Github Pages</li>
 </ul>
+<hr>
+<h1> The Design </h1>
