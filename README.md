@@ -12,6 +12,7 @@ The program was built using a combination of HTML, CSS, JavaScript, Node.js, Mon
 <li>MongoDB</li>
 <li>Railway app</li>
 <li>Github Pages</li>
+<li>Adobe Suite</li>
 </ul>
 <hr>
 <h1> The Design </h1>
