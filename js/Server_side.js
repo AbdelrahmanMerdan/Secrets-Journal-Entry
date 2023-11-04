@@ -39,24 +39,31 @@ app.use(express.static("Combine"))
 
 
 // Login and Signup
+// This code defines a route handler for the '/login' endpoint in your application.
 app.get('/login', (req, res) => {
     
+    // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
     res.header("Access-Control-Allow-Origin", "*");
 
+    // Parse the 'data' parameter from the query string in the request as JSON.
     var z = JSON.parse(req.query['data'])
 
+    // Extract the 'user' and 'pass' values from the parsed JSON.
     var usern = z["user"]
     var pass = z["pass"]
 
+    // Find a user with the provided username in a MongoDB collection named "Users" in the "Secrets" database.
     const finduser = client.db("Secrets").collection("Users").find({Username: usern})
         .toArray()
         .then((response) => {
             return response
         })
-
+    
+    // Define a function to check the users found by finduser.
     const checkUsers = () => {
             finduser.then((usersfound) => {
-            
+
+                // If no users are found with the given username:
                 if(usersfound.length == 0){
                     console.log("empty no user with username")
                     var jsontext = JSON.stringify({
@@ -67,18 +74,23 @@ app.get('/login', (req, res) => {
                         res.send(jsontext)
 
                 }
-
+                // If a user is found with the given username:
                 else{
+                     // Check if the provided 'pass' matches the password stored in the database for the first user found.
                     if(usersfound[0].Password == pass){
+                        // Assign the user information to the 'user' variable.
                         user = usersfound[0]
                         console.log(user)
+                        // Create a JSON response indicating success and send it to the client.
                         var jsontext = JSON.stringify({
                             'action': z['action'],
                             'flag': true,
                     })
                     res.send(jsontext)
                 }
+                // If the password does not match:        
                 else{
+                    // Create a JSON response indicating failure and send it to the client.
                     var jsontext = JSON.stringify({
                         'action': z['action'],
                         'flag': false,
@@ -92,30 +104,36 @@ app.get('/login', (req, res) => {
                 }
             })
     }
-
+    // Call the 'checkUsers' function to initiate the user authentication process.
      checkUsers()
 })
 
 app.post('/signup', (req, res) => {
     
+    // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
     res.header("Access-Control-Allow-Origin", "*");
 
+    // Parse the 'data' parameter from the query string in the request as JSON.
     var z = JSON.parse(req.query['data'])
 
+    // Extract the 'user' and 'pass' values from the parsed JSON.
     var usern = z["user"]
-        var pass = z["pass"]
-
-        const finduser = client.db("Secrets").collection("Users").find({Username: usern})
-            .toArray()
-            .then((response) => {
-                return response
-            })
-
+    var pass = z["pass"]
+    
+    // Find a user with the provided username in a MongoDB collection named "Users" in the "Secrets" database.
+    const finduser = client.db("Secrets").collection("Users").find({Username: usern})
+        .toArray()
+        .then((response) => {
+            return response
+        })
+    // Define a function to add a new user or return an error if the username is already taken.
         const addUsers = () => {
             finduser.then((usersfound) => {
-            
+                
+                // If no users are found with the given username:
                 if(usersfound.length == 0){
                     console.log("Creating User!")
+                    // Create a new user object with default values.
                     var newuser = {
                                 "Username" : usern ,
                                 "Password" : pass,
@@ -124,8 +142,10 @@ app.post('/signup', (req, res) => {
                                 "Settings" : ["lightgray", "#CE7777", "#2B3A55"],
                                 "Profilepic" : "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
                             }
+                        // Insert the new user into the "Users" collection in the database.
                         client.db("Secrets").collection("Users").insertOne(newuser)
-
+                    
+                        // Create a JSON response indicating success and send it to the client.
                         var jsontext = JSON.stringify({
                             'action': z['action'],
                             'flag': true,
@@ -134,11 +154,11 @@ app.post('/signup', (req, res) => {
                         res.send(jsontext)
 
                 }
-
-
-
+                    
+                // If a user with the same username already exists:
                 else{
                     console.log("already taken")
+                    // Create a JSON response indicating failure (username already taken) and send it to the client.
                     var jsontext = JSON.stringify({
                     'action': z['action'],
                     'flag': false,
@@ -148,7 +168,7 @@ app.post('/signup', (req, res) => {
                 }
                 });
             };
-
+            // Call the 'addUsers' function to initiate the user creation process.
             addUsers()
 
     
@@ -158,36 +178,42 @@ app.post('/signup', (req, res) => {
 
 
 //Add Journal and Delete it
+
+// This code defines a route handler for the '/generatejournal' endpoint in your application, expecting a POST request.
 app.post('/generatejournal' , (req, res) => {
     
+    // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
     res.header("Access-Control-Allow-Origin", "*");
 
+    // Parse the 'data' parameter from the query string in the request as JSON.
     var z = JSON.parse(req.query['data'])
 
+    // Create a query to find the user's information in a MongoDB collection based on the user's stored Username.
     const finduser = client.db("Secrets").collection("Users").find({Username: user.Username})
     .toArray()
     .then((response) => {
         return response
     })
 
+// Define a function to add a new journal entry or return an error if a journal entry with the same title already exists for the user.
 const addJournal = () => {
     finduser.then((usersfound) => {
         var flag = true
+        // Check if a journal entry with the same title already exists for the user.
        for(var n in user["Journal_Entrys"]){
-    
         if(user["Journal_Entrys"][n][0] == z["entry"][0]){
-            
             flag = false                    
         }
     }
 
         if (flag){
+            // Update the user's document in the "Users" collection by pushing the new journal entry.
             client.db("Secrets").collection("Users")
             .updateOne({Username:user.Username }, {$push: {Journal_Entrys: z["entry"]}})
-
+            // Also update the local 'user' object to reflect the change.
             user.Journal_Entrys.push(z["entry"])
             console.log(user)
-
+            // Create a JSON response indicating success and send it to the client.
             var jsontext = JSON.stringify({
             'action': z['action'],
             'flag': flag
@@ -196,6 +222,7 @@ const addJournal = () => {
             
         }
         else{
+            // Create a JSON response indicating failure (entry already exists) and send it to the client.
             var jsontext = JSON.stringify({
                 'action': z['action'],
                 'flag': flag
@@ -209,6 +236,7 @@ const addJournal = () => {
 
     
 }
+    // Call the 'addJournal' function to initiate the process of adding a journal entry.
 addJournal()   
     
     
