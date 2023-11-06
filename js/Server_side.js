@@ -232,49 +232,46 @@ const addJournal = () => {
         }
 
             
+        })   
+    }
+    // Call the 'addJournal' function to initiate the process of adding a journal entry.
+    addJournal()      
     })
 
-    
-}
-    // Call the 'addJournal' function to initiate the process of adding a journal entry.
-addJournal()   
-    
-    
-   
-})
-
-
+// This code defines a route handler for the '/addjournal' endpoint in your application, expecting a POST request.
 app.post('/addjournal' , (req, res) => {
-    
+
+    // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
     res.header("Access-Control-Allow-Origin", "*");
-
+    // Parse the 'data' parameter from the query string in the request as JSON.
     var z = JSON.parse(req.query['data'])   
-
+    // Create a JSON response containing the 'action' from the request and the user's journal entries.
     var jsontext = JSON.stringify({
         'action': z['action'],
         'journals': user.Journal_Entrys,
     });
-
+    // Send the JSON response with the user's journal entries to the client.
     console.log(JSON.parse(jsontext)["action"])
     res.send(jsontext)
    
 })
 
+// This code defines a route handler for the '/deletejournal' endpoint in your application, expecting a POST request.
 app.post('/deletejournal' , (req, res) => {
-    
+    // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
     res.header("Access-Control-Allow-Origin", "*");
-
+    // Parse the 'data' parameter from the query string in the request as JSON.
     var z = JSON.parse(req.query['data'])
-    
+    // Iterate through the user's journal entries to find the one to be deleted.
     for(var n in user["Journal_Entrys"]){
-        // console.log(user["Journal_Entrys"][n][0])
+        // Check if the title of the journal entry matches the one to be deleted.
         if(user["Journal_Entrys"][n][0] == z["journal"]){
+            // Set 'tr' to true to indicate that a matching entry was found.
             var tr =user["Journal_Entrys"][n][0] == z["journal"]
-            
+            // Remove the matching journal entry from the user's 'Journal_Entrys'.
             user["Journal_Entrys"].splice(n,1)
-
+            // Call a function 'removejournal'.
             console.log(user["Journal_Entrys"])
-
             removejournal()         
         }
     } 
@@ -282,45 +279,50 @@ app.post('/deletejournal' , (req, res) => {
    
 })
 
+function removejournal(){
+    client.db("Secrets").collection("Users").updateOne({Username: user.Username}, {$set: {"Journal_Entrys": user.Journal_Entrys}})
+    .then(console.log("Changed"))
+    }
+
 
 //Change Username and Password
+// This code defines a route handler for the '/setting' endpoint in your application, expecting a POST request.
 app.post('/setting' , (req, res) => {
-    
+    // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
     res.header("Access-Control-Allow-Origin", "*");
-
+    // Parse the 'data' parameter from the query string in the request as JSON.
     var z = JSON.parse(req.query['data']) 
-    
+    // Extract the 'user' and 'pass' values from the parsed JSON.
     var userset = z["user"]
     var passet = z["pass"]
     
-        
+       // Create a query to find a user with the provided 'userset' (new username) in a MongoDB collection named "Users." 
         const finduser = client.db("Secrets").collection("Users").find({Username: userset})
             .toArray()
             .then((response) => {
                 return response
             })
-
+        // Define a function to change the user's username or password based on the provided data.
         const changeuser = () => {
             finduser.then((usersfound) => {
                 
-                
+                // Check conditions for changing the username or password:
                 if(  ((usersfound.length == 1) && (usersfound[0].Username == user.Username)) || (usersfound.length == 0)){
                     console.log("Changing User!")
-                    
+                    // If a new username is provided, update it in the database and the local 'user' object.
                     if(userset != ''){
                         client.db("Secrets").collection("Users").updateOne({Username: user.Username}, {$set: {"Username": userset}})
                             .then(console.log("Changed Username"))
-                        
                         user["Username"] = userset 
                     }
-
+                    // If a new password is provided, update it in the database and the local 'user' object.
                     if(passet != ''){
                         client.db("Secrets").collection("Users").updateOne({Username: user.Username}, {$set: {"Password": passet}})
                             .then(console.log("Changed Password"))
                         user["Password"] = passet 
 
                     }
-
+                    // Create a JSON response indicating success and send it to the client.
                         var jsontext = JSON.stringify({
                             'action': z['action'],
                             'flag': true,
@@ -333,6 +335,7 @@ app.post('/setting' , (req, res) => {
 
 
                 else{
+                    // Create a JSON response indicating failure (username already taken) and send it to the client.
                     console.log("already taken, not changed")
                     var jsontext = JSON.stringify({
                     'action': z['action'],
@@ -343,13 +346,13 @@ app.post('/setting' , (req, res) => {
                 }
                 });
             };
-
+            // Call the 'changeuser' function to initiate the process of changing the username or password.
             changeuser()
    
 })
 
 
-//Customize Pages
+//Customize Pages NOT YET IMPLEMENTED
 app.post('/customize' , (req, res) => {
     
     res.header("Access-Control-Allow-Origin", "*");
@@ -430,409 +433,3 @@ app.post('/w' , (req, res) => {
     
    
 })
-
-
-
-
-
-
-// This shouldnt be needed anymore
-app.post('/post', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-
-    var z = JSON.parse(req.query['data'])
-
-    // take the create Journal action and put the journal into the user
-    if(z["action"] == 'generateJournal'){
-        
-
-            // var flag = true
-
-            // for(var n in user["Journal_Entrys"]){
-            
-            //     if(user["Journal_Entrys"][n][0] == z["entry"][0]){
-                    
-            //         flag = false                    
-            //     }
-            // }
-
-            // if(flag){
-            //     user.Journal_Entrys.push(z["entry"])
-            //     console.log(z["entry"])
-            // }
-
-            // var jsontext = JSON.stringify({
-            //     'action': z['action'],
-            //     'flag': flag
-            // });
-    
-            // res.send(jsontext)
-
-
-
-            const finduser = client.db("Secrets").collection("Users").find({Username: usern})
-            .toArray()
-            .then((response) => {
-                return response
-            })
-
-        const addJournal = () => {
-            finduser.then((usersfound) => {
-                var flag = true
-               for(var n in user["Journal_Entrys"]){
-            
-                if(user["Journal_Entrys"][n][0] == z["entry"][0]){
-                    
-                    flag = false                    
-                }
-            }
-
-                if (flag){
-                    client.db("Secrets").collection("Users")
-                    .updateOne({Username:user.Username }, {$push: {Journal_Entrys: z["entry"]}})
-
-                    user.Journal_Entrys.push(z["entry"])
-                    console.log(user)
-
-                    var jsontext = JSON.stringify({
-                    'action': z['action'],
-                    'flag': flag
-                    });
-                    res.send(jsontext)
-                    
-                }
-                else{
-                    var jsontext = JSON.stringify({
-                        'action': z['action'],
-                        'flag': flag
-                        });
-                        console.log("not updated")
-                        res.send(jsontext)
-                }
-
-                    
-            })
-
-            
-        }
-        addJournal()         
-      
-    }
-    else if(z["action"] == 'AddJournal'){
-        
-        var jsontext = JSON.stringify({
-            'action': z['action'],
-            'journals': user.Journal_Entrys,
-        });
-
-        console.log(JSON.parse(jsontext)["action"])
-        res.send(jsontext)
-    }
-    
-    else if(z["action"] == 'Login'){
-        // var usern = z["user"]
-        // var pass = z["pass"]
-
-        // var flag = false
-
-        // for (var use in users){
-            
-        //     if (users[use]["Username"] == usern){
-        //         console.log(users[use]["Username"])
-        //         if(users[use]["Password"] == pass){
-        //             flag = true
-        //             user = users[use]
-        //         }
-        //     }
-        // }
-        // var jsontext = JSON.stringify({
-        //     'action': z['action'],
-        //     'flag': flag,
-        // });
-        
-        // res.send(jsontext)
-
-        var usern = z["user"]
-        var pass = z["pass"]
-
-        const finduser = client.db("Secrets").collection("Users").find({Username: usern})
-            .toArray()
-            .then((response) => {
-                return response
-            })
-
-        const checkUsers = () => {
-            finduser.then((usersfound) => {
-            
-                if(usersfound.length == 0){
-                    console.log("empty no user with username")
-                    var jsontext = JSON.stringify({
-                            'action': z['action'],
-                            'flag': false,
-                        });
-                        
-                        res.send(jsontext)
-
-                }
-
-                else{
-                    if(usersfound[0].Password == pass){
-                        user = usersfound[0]
-                        console.log(user)
-                        var jsontext = JSON.stringify({
-                            'action': z['action'],
-                            'flag': true,
-                    })
-                    res.send(jsontext)
-                }
-                else{
-                    var jsontext = JSON.stringify({
-                        'action': z['action'],
-                        'flag': false,
-                })
-                res.send(jsontext)
-
-                }
-                    
-                
-                }
-            })
-        }
-
-        checkUsers()
-    }
-    
-    else if(z["action"] == 'Signup'){
-        // var usern = z["user"]
-        // var pass = z["pass"]
-
-        // var flag = true
-
-        // for (var use in users){
-            
-        //     if (users[use]["Username"] == usern){
-        //             flag = false
-        //         }
-        //     }
-        
-
-        // if (flag){
-        //     var newuser = {
-        //         "Username" : usern ,
-        //         "Password" : pass,
-        //         "Journal_Entrys" : [],
-        //         "Reminders": [],
-        //         "Settings" : ["lightgray", "#CE7777", "#2B3A55"],
-        //         "Profilepic" : "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
-        //     }
-        //     users[usern] = {
-        //         "Username" : usern ,
-        //         "Password" : pass,
-        //         "Journal_Entrys" : [],
-        //         "Reminders": [],
-        //         "Settings" : ["lightgray", "#CE7777", "#2B3A55"],
-        //         "Profilepic" : "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
-        //     }
-
-        //     client.db("Secrets").collection("Users").insertOne(newuser)
-
-        //     console.log(users[usern])
-        // }
-        // var jsontext = JSON.stringify({
-        //     'action': z['action'],
-        //     'flag': flag,
-        // });
-        
-        // res.send(jsontext)
-
-        var usern = z["user"]
-        var pass = z["pass"]
-
-        const finduser = client.db("Secrets").collection("Users").find({Username: usern})
-            .toArray()
-            .then((response) => {
-                return response
-            })
-
-        const addUsers = () => {
-            finduser.then((usersfound) => {
-            
-                if(usersfound.length == 0){
-                    console.log("empty")
-                    var newuser = {
-                                "Username" : usern ,
-                                "Password" : pass,
-                                "Journal_Entrys" : [],
-                                "Reminders": [],
-                                "Settings" : ["lightgray", "#CE7777", "#2B3A55"],
-                                "Profilepic" : "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
-                            }
-                        client.db("Secrets").collection("Users").insertOne(newuser)
-
-                        var jsontext = JSON.stringify({
-                            'action': z['action'],
-                            'flag': true,
-                        });
-                        
-                        res.send(jsontext)
-
-                }
-
-
-
-                else{
-                    console.log("already taken")
-                    var jsontext = JSON.stringify({
-                    'action': z['action'],
-                    'flag': false,
-                });
-                
-                res.send(jsontext)
-                }
-                });
-            };
-
-            addUsers()
-
-    }
-
-    else if(z["action"] == 'Sett'){
-        var userset = z["user"]
-        var passet = z["pass"]
-    
-        var flag = true
-
-        
-        for (var use in users){
-
-            if (users[use]["Username"] == userset){
-                    flag = false
-                }
-            }
-        
-        if(flag){
-            
-            user["Password"] = passet
-            if(userset != ""){
-                user["Username"] = userset 
-                console.log(user["Username"])
-            }
-        }
-
-        var jsontext = JSON.stringify({
-            'action': z['action'],
-            'flag': flag,
-        });
-        
-        res.send(jsontext)
-    
-    }
-
-    else if(z["action"] == 'Customize'){
-        
-        var num = z["theme"]
-        
-        if(num == 0){
-            user["Settings"] = ["lightgray", "#CE7777", "#2B3A55"]
-        }
-        else if(num == 1){
-            user["Settings"] = ["#E8C4C4", "#8EACD0", "#B0C1DB"]
-            
-        }
-        else if(num == 2){
-            user["Settings"] = ["#FCDDB0", "#FF9F9F", "#E97777"]
-        }
-        else if(num == 3){
-            user["Settings"] = ["#FBF7F0", "#D9E400", "#CDC9C3"]
-        }
-
-
-
-        // console.log(user["Settings"])
-    }
-    
-    else if(z["action"] == 'CustomizePage'){
-        
-        var jsontext = JSON.stringify({
-        
-            'action': z['action'],
-            "back" : user["Settings"][0],
-            "top": user["Settings"][1],
-            "myBar":user["Settings"][2]
-        });
-    
-        res.send(jsontext)
-    }
-
-    else if(z["action"] == 'Profile'){
-        user["Profilepic"] = z["theme"]
-        // console.log(user["Profilepic"])
-    }
-
-    else if(z["action"] == 'Ppic'){
-        
-        var jsontext = JSON.stringify({
-        
-            'action': z['action'],
-            'url': user["Profilepic"]
-        });
-        // console.log(user["Profilepic"])
-        
-        res.send(jsontext)
-    }
-
-    else if(z["action"] == 'reminder'){
-        var min = z["time"]
-        var message = z["title"] + ": " + z["notes"]
-
-        setTimeout(function(){
-           
-            var jsontext = JSON.stringify({
-        
-                'action': 'reminder',
-                'message': message
-            });
-            console.log(message)
-            
-            res.send(jsontext)
-
-        },min * 10000)
-        
-
-    }
-
-    else if(z["action"]=='delete'){
-        for(var n in user["Journal_Entrys"]){
-            // console.log(user["Journal_Entrys"][n][0])
-            if(user["Journal_Entrys"][n][0] == z["journal"]){
-                var tr =user["Journal_Entrys"][n][0] == z["journal"]
-                
-                user["Journal_Entrys"].splice(n,1)
-
-                console.log(user["Journal_Entrys"])
-
-                change()
-
-                
-                // console.log(deletejrnl)
-                
-                
-            }
-        } 
-        // console.log(user["Journal_Entrys"])
-    }
-
-
-})
-
-
-
-
-function removejournal(){
-    client.db("Secrets").collection("Users").updateOne({Username: user.Username}, {$set: {"Journal_Entrys": user.Journal_Entrys}})
-    .then(console.log("Changed"))
-    }
-
-
-
-    
