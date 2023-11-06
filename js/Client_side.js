@@ -3,7 +3,7 @@ var url = "https://secrets-server-side-production.up.railway.app";
 // var url = "http://localhost:2000";
 
 // login page
-// This function is named 'login' and is likely called when a login form is submitted.
+// This function is called when a login form is submitted.
 function login(){
   // Get the values of the 'user' and 'pass' fields from the HTML form.
   var usern = document.getElementById("user").value
@@ -27,7 +27,7 @@ function login(){
     document.getElementById("loginfail").innerHTML = "Wrong username or password, try again"
   }
 }
-// This function is named 'signup' and is likely called when a user submits a signup form.
+// This function is called when a user submits a signup form.
 function signup(){
   // Get the values of the 'user' and 'pass' fields from the HTML form.
   var usern = document.getElementById("user").value
@@ -50,11 +50,11 @@ function signup(){
 function loginresponse(data, status){
   // Parse the JSON data received from the server.
   var response = JSON.parse(data);
-  // Extract the 'flag' value from the response, which likely indicates the success of the login attempt.
+  // Extract the 'flag' value from the response, indicating the success of the login attempt.
   var ff = response["flag"]
   // If 'ff' is true (login was successful):  
   if (ff){
-    // Redirect the user to a new page, likely the main application page.
+    // Redirect the user to the main application page.
       window.location.href="/Secrets-Journal-Entry/Project.html";
 
     }
@@ -68,7 +68,7 @@ function loginresponse(data, status){
 function signupresponse(data, status){
   // Parse the JSON data received from the server.
   var response = JSON.parse(data);
-  // Extract the 'flag' value from the response, which likely indicates the success of the signup attempt.
+  // Extract the 'flag' value from the response, indicating the success of the signup attempt.
   var ff = response["flag"]
     // If 'ff' is true (signup was successful):
     if (ff){
