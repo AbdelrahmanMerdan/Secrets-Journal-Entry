@@ -39,7 +39,7 @@ app.use(express.static("Combine"))
 
 
 // Login and Signup
-// This code defines a route handler for the '/login' endpoint in your application.
+// This code defines a route handler for the '/login' endpoint in the application.
 app.get('/login', (req, res) => {
     
     // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
@@ -179,7 +179,7 @@ app.post('/signup', (req, res) => {
 
 //Add Journal and Delete it
 
-// This code defines a route handler for the '/generatejournal' endpoint in your application, expecting a POST request.
+// This code defines a route handler for the '/generatejournal' endpoint, expecting a POST request.
 app.post('/generatejournal' , (req, res) => {
     
     // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
@@ -238,7 +238,7 @@ const addJournal = () => {
     addJournal()      
     })
 
-// This code defines a route handler for the '/addjournal' endpoint in your application, expecting a POST request.
+// This code defines a route handler for the '/addjournal' endpoint, expecting a POST request.
 app.post('/addjournal' , (req, res) => {
 
     // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
@@ -256,7 +256,7 @@ app.post('/addjournal' , (req, res) => {
    
 })
 
-// This code defines a route handler for the '/deletejournal' endpoint in your application, expecting a POST request.
+// This code defines a route handler for the '/deletejournal' endpoint, expecting a POST request.
 app.post('/deletejournal' , (req, res) => {
     // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
     res.header("Access-Control-Allow-Origin", "*");
@@ -286,7 +286,7 @@ function removejournal(){
 
 
 //Change Username and Password
-// This code defines a route handler for the '/setting' endpoint in your application, expecting a POST request.
+// This code defines a route handler for the '/setting' endpoint, expecting a POST request.
 app.post('/setting' , (req, res) => {
     // Set the "Access-Control-Allow-Origin" header to allow cross-origin requests.
     res.header("Access-Control-Allow-Origin", "*");
